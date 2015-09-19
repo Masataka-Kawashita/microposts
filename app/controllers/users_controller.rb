@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @microposts = @user.microposts
   end
   
   def edit
