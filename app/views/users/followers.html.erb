@@ -1,0 +1,14 @@
+<h1>followers</h1>
+<% @users.each do |user| %>
+<div class="row">
+    <section class="user_info">
+      <h2>
+        <%= gravatar_for user %>
+        <%= user.name %>
+       <p><%= user.region %></p>
+       <P><%= user.profile %></P>
+      </h2>
+    </section>
+</div>
+<hr>
+<% end %>
