@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show,:edit, :update]
-  before_action :logged_in_user, only: [:followings,:followers]
+  before_action :set_user, only: [:show,:edit, :update,:followings,:followers]
   
   def new
     @user = User.new
@@ -32,11 +31,11 @@ class UsersController < ApplicationController
   end
   
   def followings
-     @users = current_user.following_users
+     @users = @user.following_users
   end
   
   def followers
-    @users = current_user.follower_users
+    @users = @user.follower_users
   end
   
   private
