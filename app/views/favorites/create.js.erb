@@ -1,0 +1,1 @@
+$("div#favorite-<%= @micropost.id  %>").html("<%= escape_javascript(render('microposts/favorited', micropost: @micropost)) %>")

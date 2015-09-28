@@ -1,3 +1,5 @@
+<h1>favorite</h1>
+<% @microposts.each do |micropost| %>
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
@@ -19,3 +21,5 @@
     <% end %>
   </span>
 </li>
+<hr>
+<% end %>

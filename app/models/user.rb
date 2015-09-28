@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
     
     has_many :follower_users, through: :follower_relationships,source: :follower
     
+    has_many :favorites_relationships, class_name:  "Favorite",
+                                     foreign_key: "user_id",
+                                     dependent: :destroy
+    has_many :favorites_users, through: :favorites_relationships, source: :micropost
+    
     def follow(other_user)
         following_relationships.create(followed_id: other_user.id)
     end
@@ -41,4 +46,15 @@ class User < ActiveRecord::Base
         Micropost.where(user_id: following_user_ids + [self.id])
     end
     
+    def create_favorite(micropost)
+        favorites_relationships.create(micropost_id: micropost.id)
+    end
+    
+    def delete_favorite(micropost)
+        favorites_relationships.find_by(micropost_id: micropost.micropost_id).destroy
+    end
+    
+    def favorite?(micropost)
+        favorites_users.include?(micropost)
+    end
 end

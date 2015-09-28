@@ -1,0 +1,4 @@
+     <%= form_for(current_user.favorites_relationships.find_by(micropost_id: micropost.id),html: { method: :delete }, remote: true) do |f| %>
+     <div><%= hidden_field_tag :micropost_id, micropost.id %></div>
+     <%= f.submit "favorited", class: "btn" %>
+     <%end %>

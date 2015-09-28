@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+100.times do |i|
+  Micropost.create!(
+    user_id:    "1",
+    content: "つぶやき #{i}",
+  )
+end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show,:edit, :update,:followings,:followers]
+  before_action :set_user, only: [:show,:edit, :update,:followings,:followers,:favorites]
   
   def new
     @user = User.new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @microposts = @user.microposts
+    @microposts = @user.microposts.page(params[:page])
   end
   
   def edit
@@ -36,6 +36,10 @@ class UsersController < ApplicationController
   
   def followers
     @users = @user.follower_users
+  end
+  
+  def favorites
+    @microposts = @user.favorites_users
   end
   
   private
